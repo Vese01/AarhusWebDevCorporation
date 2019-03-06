@@ -1,0 +1,30 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.HomePage>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "Master.cshtml";
+}
+
+<img src="@Umbraco.Field("logo")">
+<h1>@Umbraco.Field("siteTitle")</h1>
+<p>@Umbraco.Field("mainContent")</p>
+<h2>@Umbraco.Field("footer")</h2>
+
+@{
+var root = Model.Content.Site();
+var selection = root.Children.Where(x => x.IsVisible()).ToArray();
+
+foreach (var item in selection) {
+    if(item.Children().Where(x => x.IsVisible()).Count() > 0)
+    {
+        foreach (var subMenuItem in item.Children().Where(x => x.IsVisible())) {
+            
+        }
+    }
+}
+}
+      
+   <div>@Umbraco.RenderMacro("listNewestProjects")</div>   
+      
+      
+      
+      
